@@ -1,0 +1,6 @@
+enum ReferenceDoc {
+    PASSPORT
+    AADHAR
+    PAN
+    VOTERID
+}

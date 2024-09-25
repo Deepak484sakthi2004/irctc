@@ -1,0 +1,23 @@
+type User
+{
+    UserId : String
+    referenceDocs : ReferenceDoc
+    name : String
+    referenceId : String
+}
+
+type Train
+{
+    trainId : String
+     trainName : String,
+    startStation : Station
+     endStation : Station
+    stations: [Station!]!
+}
+
+type Station
+{
+    stationId: Int
+    stationName : String
+    trains : [Train!]!
+}

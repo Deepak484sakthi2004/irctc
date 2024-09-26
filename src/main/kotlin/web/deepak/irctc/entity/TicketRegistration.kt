@@ -1,5 +1,6 @@
 package web.deepak.irctc.entity
 
+import jakarta.persistence.Column
 import web.deepak.irctc.enum.SeatStatus
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -14,6 +15,7 @@ import java.time.LocalDateTime
 @Entity
 data class TicketRegistration(
         @Id
+        @Column(name="ticket_id")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val ticketId: Long? = null,
 

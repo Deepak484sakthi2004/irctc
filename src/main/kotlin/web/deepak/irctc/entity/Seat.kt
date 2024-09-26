@@ -21,7 +21,7 @@ data class Seat(
     val seatId: Int,
 
     @ManyToOne
-    @JoinColumn(name = "train_id", nullable = false)
+    @JoinColumn(name = "train", nullable = false)
     var train: Train,
 
     var seatStatus: SeatStatus = SeatStatus.FREE,

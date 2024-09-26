@@ -16,16 +16,17 @@ import java.time.LocalDateTime
  data class WaitingList (
 
     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val waitingListId: Long? = null,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val waitingListId: Long? = null,
 
     @ManyToOne
-        @JoinColumn(name = "user_id", nullable = false)
-        val user: User,
+    @JoinColumn(name = "user_id", nullable = false)
+    val user: User,
 
     @ManyToOne
-        @JoinColumn(name = "train_id", nullable = false)
-        val train: Train,
+    @JoinColumn(name = "train_id", nullable = false)
+    val train: Train,
+
 
     var status: SeatStatus = SeatStatus.WAITING,
 

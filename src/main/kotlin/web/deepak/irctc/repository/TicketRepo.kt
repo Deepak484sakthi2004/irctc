@@ -6,5 +6,4 @@ import web.deepak.irctc.entity.TicketRegistration
 
 @Repository
 interface TicketRepo : JpaRepository<TicketRegistration,Long>{
-    fun findConflictingBookings(tid: String, startStationId: Int, endStationId: Int): List<TicketRegistration>
 }

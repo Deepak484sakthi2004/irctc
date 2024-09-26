@@ -7,11 +7,10 @@ type Mutation
     updateStation(stationId:Int,stationName : String) : Station
     deleteStation(stationId: Int) : String
 
-    addTrain(tid:String,tname : String,startStationId:Int, endStationId : Int) : Train
+    addTrain(tid: String!, tname: String!, startStationId: Int!, endStationId: Int!, stationIds: [Int!]!): Train
 
-
-    bookTicket(uid: ID!, tid: String!, startStationId: Int!, endStationId: Int!): String
-    cancelTicketBooking(ticketId: ID!): String
+     bookTicket(uid: ID, tid: String, sStatid: Int, endStatid: Int): String,
+    cancelTicketBooking(ticketId: ID): String
 
 }
 

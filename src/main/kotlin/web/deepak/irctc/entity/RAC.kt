@@ -24,8 +24,10 @@ data class RAC(
     val user: User,
 
     @ManyToOne
-    @JoinColumn(name = "train_id", nullable = false)
+    @JoinColumn(name = "train", nullable = false)
     val train: Train,
+
+
 
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)

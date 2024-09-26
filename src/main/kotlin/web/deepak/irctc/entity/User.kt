@@ -15,6 +15,7 @@ data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val UserId : Long? = null,
+
     var referenceDocs : ReferenceDoc,
     var referenceId : String,
     var name : String,

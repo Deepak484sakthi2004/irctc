@@ -1,13 +1,11 @@
 package web.deepak.irctc.service
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import web.deepak.irctc.entity.Seat
 import web.deepak.irctc.entity.Station
 import web.deepak.irctc.entity.Train
 import web.deepak.irctc.enum.SeatStatus
-import web.deepak.irctc.repository.SeatRepo
 import web.deepak.irctc.repository.StationRepo
 import web.deepak.irctc.repository.TrainRepo
 
@@ -16,10 +14,10 @@ class TrainService @Autowired
 constructor(
     private val trainRepo: TrainRepo,
     private val stationRepo: StationRepo,
-    private val seatRepo: SeatRepo
+    private val seatService: SeatService
 )
-{
 
+{
     fun createTrain(tId: String, tName : String,startStatId : Int , endStatId : Int) : Train
     {
         val startStationInstance = stationRepo.findById(startStatId).orElseThrow{RuntimeException("No station with Id")}
@@ -52,16 +50,6 @@ constructor(
         return trainRepo.findByTrainName(Username)
     }
 
-//    fun findTrainsByStartStation(statId:Int) : List<Train>?
-//    {
-//        return trainRepo.findTrainsByStartStation(statId)
-//    }
-//
-//    fun findTrainsByEndStation(Id:Int) : List<Train>?
-//    {
-//        return trainRepo.findTrainsByEndStation(Id)
-//    }
-
 
     fun updateTrain(trainId: String, trainName: String? ,startStation : Int? ,endStation :Int?): Train
     {
@@ -89,6 +77,6 @@ constructor(
 
     fun findByTrain_TrainIdAndStatus(trainId: String, status: SeatStatus): List<Seat>
     {
-        return seatRepo.findByTrain_TrainIdAndStatus(trainId,status)
+        return seatService.getSeatsByTrainIdAndStatus(trainId,status)
     }
 }

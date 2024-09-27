@@ -6,4 +6,9 @@ type Query
     getTrains : [Train]!
 
     getStations : [Station]!
+
+    getTickets : [TicketRegistration]
+    getTicketById(tid:ID) : TicketRegistration
+
+    getSeatsByTrain(tid:String) : [Seat]!
 }

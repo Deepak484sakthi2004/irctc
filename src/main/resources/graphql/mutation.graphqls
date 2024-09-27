@@ -1,16 +1,19 @@
 type Mutation
 {
-    addUser(uname : String, refDoc : ReferenceDoc, refId :String) : User
+    addUser(uname : String, refDoc : ReferenceDoc!, refId :String!) : User
 #    updateUser(uid : String, ) : User
 
-    addStation(name : String) : Station
-    updateStation(stationId:Int,stationName : String) : Station
-    deleteStation(stationId: Int) : String
+     addStation(name : String!,trainIds : [String]!) : Station
+     updateStation(stationId:Int,trainIds : [String]!) : Station
+     deleteStation(stationId: Int!) : String
+
 
     addTrain(tid: String!, tname: String!, startStationId: Int!, endStationId: Int!, stationIds: [Int!]!): Train
 
-     bookTicket(uid: ID, tid: String, sStatid: Int, endStatid: Int): String,
-    cancelTicketBooking(ticketId: ID): String
+     bookTicket(uid: ID!, tid: String!, sStatid: Int!, endStatid: Int!): String,
+     cancelTicketBooking(ticketId: ID): String
 
+     addSeat(trainId : String, seatClass : SeatClass) : Seat
+     removeSeat(sid:Int!,tid : String!) : String
+     updateSeat(sid:Int,sClass: SeatClass) : Seat
 }
-

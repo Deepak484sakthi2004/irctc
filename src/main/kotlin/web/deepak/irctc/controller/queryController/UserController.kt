@@ -5,25 +5,25 @@ import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 import web.deepak.irctc.entity.User
-import web.deepak.irctc.enum.ReferenceDoc
-import web.deepak.irctc.service.UserService
+import web.deepak.irctc.repository.UserRepo
 
 @Controller
 class UserController @Autowired
 constructor(
-    private val userService: UserService
+    private val userRepo: UserRepo
 )
 {
     @QueryMapping
     fun getUsers() : List<User>
     {
-        return userService.getAllUsers()
+        return userRepo.findAll()
     }
 
     @QueryMapping
-    fun getUserById(id:Long) : User?
+    fun getUserById(id:Long) : User
     {
-        return userService.getUserById(id)
+        return userRepo.findById(id).orElseThrow{
+            RuntimeException("No User !")
+        }
     }
-
 }

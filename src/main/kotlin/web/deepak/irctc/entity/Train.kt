@@ -33,15 +33,32 @@ data class Train
     var endStation : Station,
 
     @OneToMany(mappedBy = "train", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val seats: List<Seat> = listOf(),
+    val seats: MutableList<Seat> = mutableListOf(),
 
     @OneToMany(mappedBy = "train", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val racList: List<RAC> = listOf(),
+    val racList: MutableList<RAC> = mutableListOf(),
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(
             name = "station_train",
             joinColumns = [JoinColumn(name = "train_id")],
             inverseJoinColumns = [JoinColumn(name = "station_id")])
-    var stations : List<Station>  = listOf()
+    var stations : MutableList<Station>  = mutableListOf()
         ) : Serializable
+
+{
+    companion object {
+         var MAX_RAC_SIZE = 2
+    }
+
+    init {
+        validateRACAllocation()
+    }
+
+    private fun validateRACAllocation() {
+        if (racList.size > MAX_RAC_SIZE) {
+            throw IllegalArgumentException("RAC allocation exceeds the maximum limit of $MAX_RAC_SIZE")
+        }
+    }
+
+}

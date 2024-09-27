@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 import web.deepak.irctc.entity.RAC
+import web.deepak.irctc.entity.Seat
 import web.deepak.irctc.entity.Train
 import web.deepak.irctc.entity.WaitingList
 
@@ -14,6 +15,7 @@ interface TrainRepo : JpaRepository<Train, String> {
 
     @Query("SELECT t.racList FROM Train t WHERE t.trainId = :trainId")
     fun findRacListByTrainId(trainId: String): List<RAC>
+
 
 }
 

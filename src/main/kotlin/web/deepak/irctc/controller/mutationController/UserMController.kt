@@ -7,12 +7,12 @@ import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.stereotype.Controller
 import web.deepak.irctc.entity.User
 import web.deepak.irctc.enum.ReferenceDoc
-import web.deepak.irctc.service.UserService
+import web.deepak.irctc.repository.UserRepo
 
 @Controller
 class UserMController @Autowired
 constructor(
-    private val userService: UserService
+    private val userRepo: UserRepo
 )
 {
     @MutationMapping
@@ -20,7 +20,8 @@ constructor(
                 @Argument refDoc : ReferenceDoc,
                 @Argument refId :String) : User
     {
-        return userService.createUser(uname,refDoc,refId)
+       val userInstance = User(name = uname, referenceDocs = refDoc, referenceId = refId)
+        return userRepo.save(userInstance)
     }
 
 }

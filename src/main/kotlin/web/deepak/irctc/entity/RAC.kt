@@ -30,8 +30,8 @@ data class RAC(
 
 
     @ManyToOne
-    @JoinColumn(name = "seat_id", nullable = false)
-    val seat: Seat,
+    @JoinColumn(name = "seat_id")
+    val seat: Seat?=null,
 
     var status: SeatStatus = SeatStatus.PENDING,
 

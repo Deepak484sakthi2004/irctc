@@ -4,3 +4,13 @@ enum ReferenceDoc {
     PAN
     VOTERID
 }
+enum SeatClass {
+    A1,A2,B2,B3,C
+}
+
+enum  SeatStatus {
+CONFIRMED,
+FREE,
+PENDING,
+WAITING
+}

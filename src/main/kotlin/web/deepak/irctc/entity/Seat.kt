@@ -17,8 +17,8 @@ import java.io.Serializable
 data class Seat(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id", unique = true, nullable = false)
-    val seatId: Int,
+    @Column(name = "seat_id", unique = true)
+    val seatId: Int?=null,
 
     @ManyToOne
     @JoinColumn(name = "train", nullable = false)
@@ -27,7 +27,7 @@ data class Seat(
     var seatStatus: SeatStatus = SeatStatus.FREE,
 
     @Column(name = "seat_class", nullable = false)
-    val seatClass: SeatClass,
+    var seatClass: SeatClass,
 
     ) : Serializable
 

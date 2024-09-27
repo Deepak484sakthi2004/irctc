@@ -21,7 +21,7 @@ data class Station
         var stationName : String,
 
         @ManyToMany(mappedBy = "stations", fetch = FetchType.LAZY)
-        var trains: List<Train> = mutableListOf(),
+        var trains: MutableList<Train> = mutableListOf(),
             ): Serializable
 
 

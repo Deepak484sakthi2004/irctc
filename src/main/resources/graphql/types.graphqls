@@ -21,3 +21,22 @@ type Station
     stationName : String
     trains : [Train!]!
 }
+
+type Seat
+{
+    seatId : Int
+    train : Train!
+    seatStatus : SeatStatus
+    seatClass : SeatClass
+}
+
+type TicketRegistration
+{
+    ticketId : ID
+    seat : Seat
+    user : User
+    train : Train
+    startStation : Station
+    destStation : Station
+    bookedAt : String
+}
